@@ -1,3 +1,12 @@
+body{
+  background-color: #282c34;
+  color: white;
+}
+
+h1{
+  color: yellow;
+}
+
 .App {
   text-align: center;
 }
@@ -28,6 +37,20 @@
   color: #61dafb;
 }
 
+
+.row-container {
+  display: grid;
+  grid-template-columns: 2fr 4fr 2fr;
+  gap: 16px; /* Adjust as needed for spacing between items */
+  justify-items: center;
+  align-items: start;
+}
+
+.div-box {
+  border: 2px solid white; /* Set border properties as needed */
+  padding: 16px; /* Add padding for better appearance */
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +58,49 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+Button:hover {
+  background-color: rgb(128, 131, 133);
+}
+
+.changeUsername{
+  background-color: antiquewhite;
+}
+
+.buttonTeamRed{
+  background-color: red;
+  font-size: large;
+  font-weight: bold;
+  width: 100px;
+  height: 40px;
+}
+
+.buttonTeamBlue{
+  background-color: blue;
+  font-size: large;
+  font-weight: bold;
+  width: 100px;
+  height: 40px;
+}
+.buttonTeamGreen{
+  background-color: green;
+  font-size: large;
+  font-weight: bold;
+  width: 100px;
+  height: 40px;
+}
+.buttonTeamYellow{
+  background-color: yellow;
+  font-size: large;
+  font-weight: bold;
+  width: 100px;
+  height: 40px;
+}
+.buttonTeamPurple{
+  background-color: purple;
+  font-size: large;
+  font-weight: bold;
+  width: 100px;
+  height: 40px;
 }
