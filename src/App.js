@@ -11,15 +11,15 @@ import Board from "./pages/board";
 import Game from "./pages/game";
 import Admin from "./pages/admin";
 
-const socket = io.connect("http://167.235.177.240:7777", {});
-//const socket = io.connect("http://localhost:3001", {});
+//const socket = io.connect("http://167.235.177.240:7777", {});
+const socket = io.connect("http://localhost:7777", {});
 
 function App() {
   useEffect(() => {
     socket.on("receive_field", (data) => {
       alert(data.payload);
     });
-  }, [socket]);
+  });
 
   const [playerInfo, setPlayerInfo] = useState({
     username: "None",
