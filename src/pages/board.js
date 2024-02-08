@@ -17,8 +17,8 @@ const MainPage = ({ socket }) => {
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        height: "100vh", // Anpassen Sie die Höhe nach Bedarf
-        // Weitere Stile nach Bedarf hinzufügen
+        height: "1080px",
+        width: "1920px"
     };
 
     const [playerInfo] = useState({
@@ -28,9 +28,9 @@ const MainPage = ({ socket }) => {
 
     const wrapperStyle = {
         position: "relative",
-        marginLeft: "-258px",   // Move 30px to the right
-        top: "303px",
-        transform: "scale(0.73)",   // Scale down to 60%
+        marginLeft: "-240px",   // Move 30px to the right
+        top: "313px",
+        transform: "scale(0.75)",   // Scale down to 60%
         // Add more styles as needed
     };
 
