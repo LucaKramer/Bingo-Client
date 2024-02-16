@@ -46,11 +46,12 @@ const Board = ({ socket }) => {
 
     const camera = {
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "center",
+        alignItems: "center",
         transform: "scale(0.425)",
-        maxWidth: "1920px",
-        marginLeft: "-542px",
+        width: "100%",
         marginTop: "100px",
+        gap: "30px",
     };
 
     return (
