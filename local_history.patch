@@ -1,0 +1,17 @@
+Index: src/pages/board.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/pages/board.js b/src/pages/board.js
+--- a/src/pages/board.js	
++++ b/src/pages/board.js	(date 1708028184110)
+@@ -54,7 +54,7 @@
+                     <Viewer socket={socket} team={"red"}/>
+                     <Viewer socket={socket} team={"blue"}/>
+                     <Viewer socket={socket} team={"green"}/>
+-                    <Viewer socket={socket} team={"yellow"}/>
++                    <Viewer socket={socket} team={"orange"}/>
+                     <Viewer socket={socket} team={"purple"}/>
+                 </div>
+             </div>
