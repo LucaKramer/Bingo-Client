@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import 'typeface-roboto';
 
-function Viewer({ socket, team, name }) {
+function Viewer({ socket, team }) {
     const [videoFrame, setVideoFrame] = useState('');
     const [showBorder, setShowBorder] = useState(false);
     const [username, setUsername] = useState('');
 
     useEffect(() => {
-        const handleVideoFrame = (frame) => {
+        const handleVideoFrame = ({frame, name}) => {
             if (frame !== null) {
                 const sanitizedFrame = frame.startsWith('data:image/jpeg;base64,')
                     ? frame.slice('data:image/jpeg;base64,'.length)
@@ -18,14 +18,12 @@ function Viewer({ socket, team, name }) {
             } else {
                 console.warn("Received null frame.");
             }
+            setUsername(name);
         };
 
-        const handleNameChange = (name) => {
-            setUsername(name);
-        }
-
-        socket.on(`videoStream-${team}`, handleVideoFrame);
-        socket.on(`nameChange-${team}`, handleNameChange)
+        socket.on(`videoStream-${team}`, ({frame, name}) => {
+            handleVideoFrame({frame, name});
+        });
 
         return () => {
             socket.off(`videoStream-${team}`, handleVideoFrame);

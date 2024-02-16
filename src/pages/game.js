@@ -32,7 +32,7 @@ const MainPage = ({ socket, playerInfo, updateName }) => {
                 </div>
             </div>
             <SoundPlayer socket={socket} />
-            <VideoSender socket={socket} team={playerInfo.team} player={playerInfo.username} />
+            <VideoSender socket={socket} team={playerInfo.team} name={playerInfo.username} />
             <div className="div-box">
                 <GameInfo socket={socket} />
             </div>

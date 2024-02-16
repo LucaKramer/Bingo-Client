@@ -10,7 +10,7 @@ function VideoSender({ socket, team, name }) {
 
         const sendVideoFrame = () => {
             const frame = webcamRef.current.getScreenshot();
-            socket.emit(`videoStream`, {frame, team});
+            socket.emit(`videoStream`, {frame, team, name});
         };
 
         if (isSending) {
@@ -28,6 +28,7 @@ function VideoSender({ socket, team, name }) {
 
     const handleStopSending = () => {
         setIsSending(false);
+        socket.emit("leaveTeam", team);
     };
 
     return (
