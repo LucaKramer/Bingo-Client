@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 import BingoTable from "../components/BingoTable";
+import VideoSender from "../components/VideoSender";
 
 const Admin = ({ socket }) => {
     useEffect(() => {

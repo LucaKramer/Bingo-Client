@@ -23,8 +23,8 @@ const SelectColor = ({ socket, updateTeam, playerInfo }) => {
             <button className="buttonTeamGreen" onClick={() => sendTeam("green")}>
                 Green
             </button>
-            <button className="buttonTeamYellow" onClick={() => sendTeam("yellow")}>
-                Yellow
+            <button className="buttonTeamOrange" onClick={() => sendTeam("orange")}>
+                Orange
             </button>
             <button className="buttonTeamPurple" onClick={() => sendTeam("purple")}>
                 Purple

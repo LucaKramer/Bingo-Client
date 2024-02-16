@@ -5,7 +5,7 @@ const GameInfo = ({ socket }) => {
         red: [],
         blue: [],
         green: [],
-        yellow: [],
+        orange: [],
         purple: [],
     });
 
@@ -17,7 +17,7 @@ const GameInfo = ({ socket }) => {
                 red: [],
                 blue: [],
                 green: [],
-                yellow: [],
+                orange: [],
                 purple: [],
             };
 
@@ -46,14 +46,14 @@ const GameInfo = ({ socket }) => {
                     <td><h2>Red</h2></td>
                     <td><h2>Blue</h2></td>
                     <td><h2>Green</h2></td>
-                    <td><h2>Yellow</h2></td>
+                    <td><h2>Orange</h2></td>
                     <td><h2>Purple</h2></td>
                 </tr>
                 <tr>
                     <td>{teams.red.join(', ')}</td>
                     <td>{teams.blue.join(', ')}</td>
                     <td>{teams.green.join(', ')}</td>
-                    <td>{teams.yellow.join(', ')}</td>
+                    <td>{teams.orange.join(', ')}</td>
                     <td>{teams.purple.join(', ')}</td>
                 </tr>
                 </tbody>

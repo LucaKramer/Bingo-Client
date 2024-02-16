@@ -5,8 +5,9 @@ import backgroundImage from "../Layout-Background.png";
 import { useEffect, useState } from "react";
 
 import BingoTable from "../components/BingoTable";
+import Viewer from "../components/Viewer";
 
-const MainPage = ({ socket }) => {
+const Board = ({ socket }) => {
     useEffect(() => {
         socket.on("receive_field", (data) => {
             alert(data.payload);
@@ -28,19 +29,39 @@ const MainPage = ({ socket }) => {
 
     const wrapperStyle = {
         position: "relative",
-        marginLeft: "-240px",   // Move 30px to the right
+        marginLeft: "-40px",   // Move 30px to the right
         top: "313px",
+        width: "582px",
         transform: "scale(0.75)",   // Scale down to 60%
-        // Add more styles as needed
+        border: "5px solid white",
     };
 
+    const camera = {
+        display: "flex",
+        justifyContent: "space-between",
+        transform: "scale(0.425)",
+        maxWidth: "1920px",
+        marginLeft: "-542px",
+        marginTop: "100px",
+    }
+
     return (
-        <div style={backgroundStyle}>
-            <div style={wrapperStyle}>
-                <BingoTable socket={socket} playerInfo={playerInfo}/>
+        <div>
+            <div style={backgroundStyle}>
+                <div style={wrapperStyle}>
+                    <BingoTable socket={socket} playerInfo={playerInfo}/>
+                </div>
+                <div className="camera" style={camera}>
+                    <Viewer socket={socket} team={"red"}/>
+                    <Viewer socket={socket} team={"blue"}/>
+                    <Viewer socket={socket} team={"green"}/>
+                    <Viewer socket={socket} team={"orange"}/>
+                    <Viewer socket={socket} team={"purple"}/>
+                </div>
             </div>
         </div>
+
     );
 };
 
-export default MainPage;
+export default Board;

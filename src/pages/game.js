@@ -7,6 +7,7 @@ import EventLog from "../components/EventLog";
 import PlayerInfo from "../components/PlayerInfo";
 import SoundPlayer from "../components/SoundPlayer";
 import GameInfo from "../components/GameInfo";
+import VideoSender from "../components/VideoSender";
 
 const MainPage = ({ socket, playerInfo, updateName }) => {
     useEffect(() => {
@@ -31,6 +32,7 @@ const MainPage = ({ socket, playerInfo, updateName }) => {
                 </div>
             </div>
             <SoundPlayer socket={socket} />
+            <VideoSender socket={socket} team={playerInfo.team} player={playerInfo.username} />
             <div className="div-box">
                 <GameInfo socket={socket} />
             </div>

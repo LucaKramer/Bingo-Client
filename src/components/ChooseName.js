@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NChooseName = ({ setPlayerName }) => {
+const ChooseName = ({ setPlayerName }) => {
     const [name, setName] = useState("");
 
     const handleNameChange = (event) => {

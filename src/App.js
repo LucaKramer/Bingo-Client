@@ -10,9 +10,10 @@ import Index from "./pages/index";
 import Board from "./pages/board";
 import Game from "./pages/game";
 import Admin from "./pages/admin";
+import Video from "./pages/video";
 
 //const socket = io.connect("http://167.235.177.240:7777", {});
-const socket = io.connect("http://localhost:7777", {});
+const socket = io.connect("http://localhost:7777", {reconnection: true});
 
 function App() {
   useEffect(() => {
@@ -63,6 +64,11 @@ function App() {
             />
             <Route path="/index" element={<Index socket={socket} />} />
             <Route path="/board" element={<Board socket={socket} />} />
+            <Route path="/red" element={<Video socket={socket} team={`red`} />} />
+            <Route path="/blue" element={<Video socket={socket} team={"blue"} />} />
+            <Route path="/green" element={<Video socket={socket} team={"green"} />} />
+            <Route path="/orange" element={<Video socket={socket} team={"orange"} />} />
+            <Route path="/purple" element={<Video socket={socket} team={"purple"} />} />
             <Route
                 path="/game"
                 element={

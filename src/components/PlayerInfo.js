@@ -10,6 +10,9 @@ const PlayerInfo = ({ socket, playerInfo, updateName }) => {
     const changeName = () => {
         socket.emit("change_username", { playerInfo, inputValue });
         updateName(inputValue);
+        const team = playerInfo.team;
+        const name = inputValue;
+        socket.emit(`nameChange`, {name, team});
     };
 
     return (
