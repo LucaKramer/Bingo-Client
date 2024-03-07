@@ -112,13 +112,15 @@ const BingoTable = ({ socket, playerInfo }) => {
                                 width="100"
                             />
 
-                            <img
-                                style={{position: 'absolute', left: 35, bottom: 0, width: '35%', height: '35%', display: 'flex', justifyContent: 'center',
-                                    alignItems: 'center', zIndex: 2}}
-                                src={gameState[i][j].ball}
-                                alt={gameState[i][j].name}
-                                width="40"
-                            />
+                            {gameState[i][j].ball && (
+                                <img
+                                    style={{position: 'absolute', left: 35, bottom: 0, width: '35%', height: '35%', display: 'flex', justifyContent: 'center',
+                                        alignItems: 'center', zIndex: 2}}
+                                    src={gameState[i][j].ball}
+                                    alt={gameState[i][j].name}
+                                    width="40"
+                                />
+                            )}
 
                             {isShinyAnimationActive && coords && coords[0] === i && coords[1] === j && (
                                 <img
