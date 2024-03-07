@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 import BingoTable from "../components/BingoTable";
-import VideoSender from "../components/VideoSender";
+import ShiftComponent from "../components/ShiftComponent";
 
 const Admin = ({ socket }) => {
     useEffect(() => {
@@ -33,8 +33,9 @@ const Admin = ({ socket }) => {
             <button className="shuffle" onClick={() => shuffle()}>
                 Shuffle Board
             </button>
+            <ShiftComponent socket={socket} />
             <div className="row-container">
-                <BingoTable socket={socket} playerInfo={playerInfo} />
+                <BingoTable socket={socket} playerInfo={playerInfo}/>
             </div>
         </div>
     );

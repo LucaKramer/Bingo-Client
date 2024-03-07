@@ -104,3 +104,13 @@ Button:hover {
   width: 100px;
   height: 40px;
 }
+
+.video-container {
+  display: flex;
+  gap: 20px; /* Adjust the gap between videos */
+  flex-wrap: wrap
+}
+
+.video-item {
+  flex: 0 0 auto;
+}

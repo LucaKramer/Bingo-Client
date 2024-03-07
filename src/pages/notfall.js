@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
 import backgroundImage from "../Layout-Background.png";
 import BingoTable from "../components/BingoTable";
-import Viewer from "../components/Viewer";
 import VDOPlayer from "../components/VDOPlayer";
 
-const Board = ({socket}) => {
+const Notfall = ({socket}) => {
     const [playerInfo] = useState({
         username: "None",
         team: "None",
@@ -60,12 +59,9 @@ const Board = ({socket}) => {
                 <div style={wrapperStyle}>
                     <BingoTable socket={socket} playerInfo={playerInfo}/>
                 </div>
-                <div className="camera" style={camera}>
-                    <VDOPlayer socket={socket}/>
-                </div>
             </div>
         </div>
     );
 };
 
-export default Board;
+export default Notfall;
