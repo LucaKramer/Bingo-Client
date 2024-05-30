@@ -9,12 +9,17 @@ import PlayerInfo from "./components/PlayerInfo";
 import VDOPlayer from "./components/VDOPlayer";
 import VDOInput from "./components/VDOInput";
 
+import Landing from "./pages/landing";
 import Index from "./pages/index";
 import Board from "./pages/board";
 import Game from "./pages/game";
 import Admin from "./pages/admin";
 import Video from "./pages/video";
 import Notfall from "./pages/notfall";
+import Friends from "./pages/friends";
+import Race from "./pages/race"
+import RaceSettings from "./pages/raceSettings"
+import RaceFourPeople from "./pages/raceFourPeople";
 
 const socket = io("https://shinydust.de:7777", {
   transports: ["websocket"]
@@ -50,23 +55,9 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            <Route
-                path="/"
-                element={
-                  <div>
-                    <SelectColor
-                        socket={socket}
-                        playerInfo={playerInfo}
-                        updateTeam={updateTeam}
-                    />
-                    <PlayerInfo
-                        socket={socket}
-                        playerInfo={playerInfo}
-                        updateName={updateName}
-                    />
-                  </div>
-                }
-            />
+            <Route path="/" element={<Landing/>} />
+            <Route path="/streamerbingo" element={<Index socket={socket} updateTeam={updateTeam} />} />
+            <Route path="/friends" element={<Friends socket={socket} updateTeam={updateTeam} />} />
             <Route path="/index" element={<Index socket={socket} />} />
             <Route path="/board" element={<Board socket={socket} />} />
             <Route path="/notfall" element={<Notfall socket={socket} />} />
@@ -75,6 +66,12 @@ function App() {
             <Route path="/green" element={<Video socket={socket} team={"green"} />} />
             <Route path="/orange" element={<Video socket={socket} team={"orange"} />} />
             <Route path="/purple" element={<Video socket={socket} team={"purple"} />} />
+            <Route path="/race" element={<Race socket={socket} />} />
+            <Route path="/raceSettings" element={<RaceSettings socket={socket} />} />
+            <Route path="/raceFourPeople1" element={<RaceFourPeople socket={socket} arr={[1, 2, 3, 4]} />} />
+            <Route path="/raceFourPeople2" element={<RaceFourPeople socket={socket} arr={[2, 1, 3, 4]} />} />
+            <Route path="/raceFourPeople3" element={<RaceFourPeople socket={socket} arr={[3, 1, 2, 4]} />} />
+            <Route path="/raceFourPeople4" element={<RaceFourPeople socket={socket} arr={[4, 1, 2, 3]} />} />
             <Route
                 path="/game"
                 element={

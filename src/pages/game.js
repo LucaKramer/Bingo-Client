@@ -9,6 +9,9 @@ import SoundPlayer from "../components/SoundPlayer";
 import GameInfo from "../components/GameInfo";
 import VideoSender from "../components/VideoSender";
 import VDOInput from "../components/VDOInput";
+import ShiftComponent from "../components/ShiftComponent";
+import ShiftLog from "../components/ShiftLog";
+import DiagramComponent from "../components/DiagramComponent";
 
 const MainPage = ({socket, playerInfo, updateName}) => {
     useEffect(() => {
@@ -31,12 +34,20 @@ const MainPage = ({socket, playerInfo, updateName}) => {
                 <div className="div-box">
                     <EventLog socket={socket}/>
                 </div>
-                <VDOInput socket={socket} team={playerInfo.team} name={playerInfo.username} />
+                <VDOInput socket={socket} team={playerInfo.team} name={playerInfo.username}/>
+
+
             </div>
             <SoundPlayer socket={socket}/>
         </div>
     );
 };
+//<ShiftComponent socket={socket}/>
+//<div className="div-box">
+//                     <ShiftLog socket={socket}/>
+//                 </div>
+
+//<DiagramComponent socket={socket} />
 
 //<div className="div-box">
 //                 <GameInfo socket={socket} />

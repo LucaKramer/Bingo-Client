@@ -7,7 +7,13 @@ const VDOPlayer = ({ socket }) => {
     useEffect(() => {
         // Listen for active streams from the server
         socket.on('activeStreams', (streams) => {
-            setActiveStreams(streams);
+            // Sort the streams by stream.team each time new data is received
+            const sortedStreams = [...streams].sort((a, b) => {
+                if (a.team < b.team) return -1;
+                if (a.team > b.team) return 1;
+                return 0;
+            });
+            setActiveStreams(sortedStreams);
         });
 
         return () => {
@@ -16,7 +22,7 @@ const VDOPlayer = ({ socket }) => {
         };
     }, [socket]);
 
-    const videoWidth = 350; // Adjust the individual video width
+    const videoWidth = 285; // Adjust the individual video width
     const videoSpacing = 20; // Adjust the spacing between videos
 
     const viewerStyle = {
@@ -28,9 +34,9 @@ const VDOPlayer = ({ socket }) => {
     };
 
     return (
-        <div style={viewerStyle}>
+        <div style={viewerStyle} key={JSON.stringify(activeStreams)}>
             {activeStreams.map((stream) => (
-                <div key={stream.id} className="Viewer" style={{border: showBorder ? `2px solid ${stream.team}` : 'none', background: ` ${stream.team}`}}>
+                <div key={stream.id} className="Viewer" style={{border: showBorder ? `2px solid ${stream.team}` : 'none', background: `${stream.team}`}}>
                     <p style={{
                         textAlign: 'center',
                         color: 'white',

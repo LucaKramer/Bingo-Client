@@ -64,8 +64,37 @@ const BingoTable = ({ socket, playerInfo }) => {
     const createTable = () => {
         const tableRows = [];
         const { coords, color } = animationCoords || {};
+
+        // Labels for columns (A, B, C, D, E)
+        const columnLabels = ['A', 'B', 'C', 'D', 'E'];
+
+        // Labels for rows (1, 2, 3, 4, 5)
+        const rowLabels = [1, 2, 3, 4, 5];
+
+        // Function to get the label for a given index
+        const getLabel = (index, labels) => labels[index];
+
+        // Create top labels row
+        const topLabelsRow = (
+            <tr key="top-labels">
+                <td></td> {/* Empty cell for the top left corner */}
+                {columnLabels.map((label, index) => (
+                    <td key={`top-label-${index}`} className="column-label" style={{ fontSize: '1.5em', textAlign: 'center' }}>{label}</td>
+                ))}
+            </tr>
+        );
+
+        tableRows.push(topLabelsRow);
+
         for (let i = 0; i < 5; i++) {
             const rowCells = [];
+
+            // Create left label
+            const leftLabel = (
+                <td key={`left-label-${i}`} className="row-label" style={{ fontSize: '1.5em', textAlign: 'center' }}>{getLabel(i, rowLabels)}</td>
+            );
+            rowCells.push(leftLabel);
+
             for (let j = 0; j < 5; j++) {
                 const states = gameState[i][j].states;
                 const cellColors = ["white"];
@@ -73,12 +102,11 @@ const BingoTable = ({ socket, playerInfo }) => {
                 for (const state in states) {
                     if (states[state] === 1 && stateColors[state]) {
                         cellColors.push(state);
-                    }else if (states[state] === 2 && stateColors[state]) {
+                    } else if (states[state] === 2 && stateColors[state]) {
                         blocked.push(state);
                     }
                 }
                 const hasColors = cellColors.length > 1;
-
 
                 rowCells.push(
                     <td key={`cell-${i}-${j}`}>
@@ -114,8 +142,7 @@ const BingoTable = ({ socket, playerInfo }) => {
 
                             {gameState[i][j].ball && (
                                 <img
-                                    style={{position: 'absolute', left: 35, bottom: 0, width: '35%', height: '35%', display: 'flex', justifyContent: 'center',
-                                        alignItems: 'center', zIndex: 2}}
+                                    style={{ position: 'absolute', left: 35, bottom: 0, width: '35%', height: '35%', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 2 }}
                                     src={gameState[i][j].ball}
                                     alt={gameState[i][j].name}
                                     width="40"
@@ -189,8 +216,27 @@ const BingoTable = ({ socket, playerInfo }) => {
                     </td>
                 );
             }
+
+            // Create right label
+            const rightLabel = (
+                <td key={`right-label-${i}`} className="row-label" style={{ fontSize: '1.5em', textAlign: 'center' }}>{getLabel(i, rowLabels)}</td>
+            );
+            rowCells.push(rightLabel);
+
             tableRows.push(<tr key={`row-${i}`}>{rowCells}</tr>);
         }
+
+        // Create bottom labels row
+        const bottomLabelsRow = (
+            <tr key="bottom-labels">
+                <td></td> {/* Empty cell for the bottom left corner */}
+                {columnLabels.map((label, index) => (
+                    <td key={`bottom-label-${index}`} className="column-label" style={{ fontSize: '1.5em', textAlign: 'center' }}>{label}</td>
+                ))}
+            </tr>
+        );
+
+        tableRows.push(bottomLabelsRow);
 
         const animationStyle = {
             background: coords
@@ -207,6 +253,8 @@ const BingoTable = ({ socket, playerInfo }) => {
             </div>
         );
     };
+
+
 
     return (
         <div>

@@ -38,11 +38,11 @@ const Board = ({socket}) => {
 
     const wrapperStyle = {
         position: "relative",
-        marginLeft: "-40px", // Move 30px to the right
-        top: "313px",
-        width: "602px",
-        transform: "scale(0.75)", // Scale down to 60%
-        border: "5px solid white",
+        marginLeft: "-70px", // Move 30px to the right
+        top: "283px",
+        width: "638px",
+        transform: "scale(0.7)", // Scale down to 60%
+        //border: "5px solid white",
     };
 
     const camera = {
@@ -51,7 +51,7 @@ const Board = ({socket}) => {
         alignItems: "center",
         transform: "scale(1)",
         width: "100%",
-        marginTop: "256px",
+        marginTop: "206px",
     };
 
     return (

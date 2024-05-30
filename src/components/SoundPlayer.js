@@ -2,14 +2,22 @@ import React, { useEffect } from "react";
 
 const SoundPlayer = ({ socket }) => {
     useEffect(() => {
-        const playSound = () => {
-            const audio = new Audio("sounds/blue.mp3");
-            audio.volume = 0.2;
-            audio.play();
+        const playSound = (data) => {
+            const shiny = new Audio("sounds/shiny.mp3");
+            const bingo = new Audio("sounds/bingo.mp3");
+            shiny.volume = 0.2;
+            bingo.volume = 0.1;
+
+            shiny.onended = () => {
+                if (data) {
+                    bingo.play();
+                }
+            };
+            shiny.play();
         };
 
         socket.on("play_sound", (data) => {
-            playSound();
+            playSound(data);
         });
     }, [socket]);
 
